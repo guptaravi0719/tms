@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "e735b773-0a8b-4b0b-b44f-c40019dbb607",
+		"name": "Task management system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27197172",
+		"_collection_link": "https://cloudy-shuttle-803623.postman.co/workspace/New-Team-Workspace~f599ac97-56c1-4486-866c-69c22dcbb494/collection/27197172-e735b773-0a8b-4b0b-b44f-c40019dbb607?action=share&source=collection_link&creator=27197172"
+	},
+	"item": [
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"ravi@example.com\",\n  \"username\": \"ravi.gupta_1\",\n  \"full_name\": \"ravi gupta 1\",\n  \"password\": \"password\",\n  \"role\": \"member\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYXZpLmd1cHRhIiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzY0NTA1MTMxfQ.1-rSQeIYGvWt1fIC0l1ok7m6o2idONz4_RGdOJa_K8I",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/users/?skip=0&limit=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						""
+					],
+					"query": [
+						{
+							"key": "skip",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYXZpLmd1cHRhIiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzY0NTA1MTMxfQ.1-rSQeIYGvWt1fIC0l1ok7m6o2idONz4_RGdOJa_K8I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"New task 1\",\n  \"description\": \"this task is of medium priority\",\n  \"status\": \"todo\",\n  \"priority\": \"medium\",\n  \"due_date\": \"2025-12-10\",\n  \"assignee_ids\": [1],\n  \"tag_names\": [\"TMS\"],\n  \"parent_task_id\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/tasks/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"tasks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk update tasks",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYXZpLmd1cHRhIiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzY0NTA1MTMxfQ.1-rSQeIYGvWt1fIC0l1ok7m6o2idONz4_RGdOJa_K8I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"task_ids\": [\n    4\n  ],\n  \"status\": \"todo\",\n  \"priority\": \"medium\",\n  \"assignee_ids\": [\n    3\n  ],\n  \"tag_names\": [\n    \"string\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/tasks/bulk-update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"tasks",
+						"bulk-update"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
